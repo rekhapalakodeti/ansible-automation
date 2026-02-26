@@ -15,7 +15,7 @@
         state: present
   - name: "copy code from GitHub"
     get_url:
-        url: https://freewebsitetemplates.com/preview/rehabilitation-yoga/index.html
+        url: https://freewebsitetemplates.com/preview/rehabilitation-yoga/
         dest: "/var/www/html/index.php"
   - name: "Start httpd services"
     service:
