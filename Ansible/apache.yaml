@@ -18,10 +18,11 @@
           - wget
         state: present
 
-    - name: Copy code from website
-      get_url:
-        url: https://freewebsitetemplates.com/preview/rehabilitation-yoga/
+    - name: Copy custom index.php from repo
+      copy:
+        src: index.php
         dest: /var/www/html/index.php
+        mode: '0644'
 
     - name: Start httpd service
       service:
