@@ -3,7 +3,7 @@ data "aws_ami" "amazon-linux" {
 
   filter {
     name   = "name"
-    values = ["amzn2-ami-kernel-5.10-hvm-*-x86_64-gp2"]
+    values = ["al2023-ami-*-x86_64"]
   }
 
   filter {
@@ -14,7 +14,7 @@ data "aws_ami" "amazon-linux" {
 
 resource "aws_instance" "dev_machine" {
   ami = data.aws_ami.amazon-linux.id
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   key_name = "ansible-jenkins"
 
   tags = {
