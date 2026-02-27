@@ -3,12 +3,9 @@
   become: yes
   remote_user: ec2-user
   gather_facts: true
-
   vars:
     ansible_ssh_private_key_file: "/etc/ansible/ansible-jenkins.pem"
-
   tasks:
-
     - name: Install required packages
       package:
         name:
@@ -17,19 +14,16 @@
           - unzip
           - wget
         state: present
-
     - name: Copy custom index.php from repo
       copy:
         src: index.php
         dest: /var/www/html/index.php
         mode: '0644'
-
     - name: Start httpd service
       service:
         name: httpd
         state: started
         enabled: yes
-
     - name: Install terraform
       unarchive:
         src: https://releases.hashicorp.com/terraform/1.6.6/terraform_1.6.6_linux_amd64.zip
